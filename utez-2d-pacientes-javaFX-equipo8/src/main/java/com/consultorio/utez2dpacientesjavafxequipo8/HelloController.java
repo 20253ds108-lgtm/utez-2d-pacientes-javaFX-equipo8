@@ -1,13 +1,12 @@
 package com.consultorio.utez2dpacientesjavafxequipo8;
 
-import com.consultorio.utez2dpacientesjavafxequipo8.service.personaService;
+import com.consultorio.utez2dpacientesjavafxequipo8.service.PersonService;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.collections.ObservableList;
 import javafx.collections.FXCollections;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class HelloController {
@@ -50,12 +49,12 @@ public class HelloController {
     }
 
     @FXML
-    private personaService service = new personaService();
+    private PersonService service = new PersonService();
     private final ObservableList<String> data = FXCollections.observableArrayList();
 
     private void cargarArchivo(){//tratar de traer los archivos
         try {
-            List<String> objeto = service.loadDataForList();
+            List<String> objeto = service.loadData();
             data.addAll(objeto);
             lblAlertas.setText("se cargaron los datos correctamente");
             lblAlertas.setStyle("-fx-text-fill: green");
