@@ -17,14 +17,13 @@ public class AppViewController {
     @FXML private TextField txtAlergias;
     @FXML private Label lblError;
 
-
-    // botón guardar
+    // boton guardar
     @FXML
     public void clicEnGuardar(ActionEvent event) {
         // 1. IMPORTANTE: Limpiar el Label al empezar cada clic
         lblError.setText("");
 
-        // 2. Leer los datos
+        // lee los datos
         String curp = txtCurp.getText().trim().toUpperCase();
         String nombre = txtNombre.getText().trim();
         String edadStr = txtEdad.getText().trim();
@@ -32,7 +31,7 @@ public class AppViewController {
         String alergias = txtAlergias.getText().trim();
         String estatus = "Activo";
 
-        // 3. VALIDACIONES (Si entra a un IF, el 'return' detiene todo y muestra el error)
+        //VALIDACIONES return detiene todo y muestra el error, solo si entra en el if
 
         if (curp.isEmpty() || nombre.isEmpty() || edadStr.isEmpty() || tel.isEmpty()) {
             lblError.setText("¡ERROR: Faltan campos por llenar!");
@@ -59,7 +58,7 @@ public class AppViewController {
             return;
         }
 
-        // Si el programa llega aquí, es que pasó todas las pruebas de arriba
+        // si entra aquí paso las pruebas anteriores
         try {
             int edad = Integer.parseInt(edadStr);
             if (edad < 0 || edad > 120) {
@@ -67,21 +66,21 @@ public class AppViewController {
                 return;
             }
 
-            //si sale todo bien guardamos
+            //guardamos
             Paciente nuevo = new Paciente(curp, nombre, edad, tel, alergias, estatus);
             java.util.List<Paciente> lista = ManejadorArchivos.leerPacientes();
 
             boolean encontrado = false;
             for (int i = 0; i < lista.size(); i++) {
                 if (lista.get(i).getCurp().equals(curp)) {
-                    lista.set(i, nuevo); // Reemplazamos los datos viejos con los nuevos
+                    lista.set(i, nuevo); // reemplazar datos por nuevos
                     encontrado = true;
                     break;
                 }
             }
 
             if (!encontrado) {
-                lista.add(nuevo); // Si no existía, lo agregamos como nuevo
+                lista.add(nuevo); //si no existia se agrega como nuevo
             }
 
             ManejadorArchivos.guardarPacientes(lista);
@@ -95,10 +94,10 @@ public class AppViewController {
         }
     }
 
-    // 3. ACCIÓN DEL BOTÓN CANCELAR
+    // btn cancelar
     @FXML
     void clicEnCancelar(ActionEvent event) {
-        // Este truco busca la ventana donde se hizo clic y la cierra
+        //busca la ventana donde se hizo clic y la cierra
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
     }
@@ -108,7 +107,7 @@ public class AppViewController {
         lblError.setText("SISTEMA LISTO");
     }
 
-    // Este método llena los cuadros de texto con la información del paciente
+    //llena cuadros con la informacion del paciente
     public void cargarDatos(Paciente p) {
         txtCurp.setText(p.getCurp());
         txtNombre.setText(p.getNombre());
@@ -116,7 +115,7 @@ public class AppViewController {
         txtTelefono.setText(p.getTelefono());
         txtAlergias.setText(p.getAlergias());
 
-        // Bloqueamos la CURP porque normalmente no se debe editar
+        // la curp no se debe editar
         txtCurp.setEditable(false);
     }
 

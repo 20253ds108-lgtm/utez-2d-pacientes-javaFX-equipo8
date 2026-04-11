@@ -17,7 +17,7 @@ public class Paciente {
         this.estatus = estatus;
     }
 
-    // Estos son los que la tabla usa para mostrar los datos
+    // tabla, muestran los datos
     public String getCurp() { return curp; }
     public String getNombre() { return nombre; }
     public int getEdad() { return edad; }
@@ -25,7 +25,6 @@ public class Paciente {
     public String getAlergias() { return alergias; }
     public String getEstatus() { return estatus; }
 
-    // Estos son para que los botones de "Editar" y "Estatus" puedan cambiar datos
-    public void setNombre(String nombre) { this.nombre = nombre; }
+    // para que editar y estatus puedan cambiar los datos
     public void setEstatus(String estatus) { this.estatus = estatus; }
 }

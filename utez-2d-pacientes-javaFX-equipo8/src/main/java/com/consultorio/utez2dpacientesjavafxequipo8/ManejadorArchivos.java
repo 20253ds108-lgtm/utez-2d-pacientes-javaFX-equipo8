@@ -7,11 +7,11 @@ import java.util.List;
 public class ManejadorArchivos {
     private static final String NOMBRE_ARCHIVO = "persona.csv";
 
-    // 1. Método para GUARDAR la lista de la tabla al archivo CSV
+    // guardar la lista en csv
     public static void guardarPacientes(List<Paciente> lista) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(NOMBRE_ARCHIVO))) {
             for (Paciente p : lista) {
-                // Escribimos los datos separados por comas
+                // imprimimos los datos separados por comas
                 writer.println(p.getCurp() + "," + p.getNombre() + "," + p.getEdad() + "," +
                         p.getTelefono() + "," + p.getAlergias() + "," + p.getEstatus());
             }
@@ -20,19 +20,19 @@ public class ManejadorArchivos {
         }
     }
 
-    // 2. Método para LEER el archivo cuando se abre el programa
+    //leer el archivo cuando se abre
     public static List<Paciente> leerPacientes() {
         List<Paciente> lista = new ArrayList<>();
         File archivo = new File(NOMBRE_ARCHIVO);
 
-        if (!archivo.exists()) return lista; // Si el archivo no existe, mandamos la lista vacía
+        if (!archivo.exists()) return lista; // si el archivo no existe mandamos vacío
 
         try (BufferedReader reader = new BufferedReader(new FileReader(archivo))) {
             String linea;
             while ((linea = reader.readLine()) != null) {
                 String[] datos = linea.split(",");
                 if (datos.length == 6) {
-                    // Creamos el objeto paciente con los datos del texto
+                    // creacion de objeto paciente con el texto
                     lista.add(new Paciente(datos[0], datos[1], Integer.parseInt(datos[2]),
                             datos[3], datos[4], datos[5]));
                 }

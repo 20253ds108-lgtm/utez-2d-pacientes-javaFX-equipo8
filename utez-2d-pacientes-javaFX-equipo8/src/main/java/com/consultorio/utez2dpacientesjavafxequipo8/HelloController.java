@@ -1,5 +1,6 @@
 package com.consultorio.utez2dpacientesjavafxequipo8;
 
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,6 +16,7 @@ import javafx.scene.control.ButtonType;
 import java.util.Optional;
 
 public class HelloController {
+
     @FXML private Label lblError;
 
 
@@ -31,16 +33,9 @@ public class HelloController {
     @FXML private TableColumn<Paciente, String> vistaAlergias;
     @FXML private TableColumn<Paciente, String> vistaEstatus;
 
-    // --- 3. BOTONES ---
-    @FXML private Button btnNuevo;
-    @FXML private Button btnEditar;
-    @FXML private Button btnEstatus;
-    @FXML private Button btnEliminar;
-
-    // --- 4. CONFIGURACIÓN AL ARRANCAR (Solo un initialize) ---
     @FXML
     public void initialize() {
-        // 1. Conectamos las columnas (Esto déjalo como lo tienes)
+        //conectamos las columnas
         vistaCurp.setCellValueFactory(new PropertyValueFactory<>("curp"));
         vistaNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         vistaEdad.setCellValueFactory(new PropertyValueFactory<>("edad"));
@@ -48,22 +43,20 @@ public class HelloController {
         vistaAlergias.setCellValueFactory(new PropertyValueFactory<>("alergias"));
         vistaEstatus.setCellValueFactory(new PropertyValueFactory<>("estatus"));
 
-        // 2. Cargamos los datos una sola vez de forma correcta
+        //cargamos los datos una sola vez
         ObservableList<Paciente> lista = FXCollections.observableArrayList(ManejadorArchivos.leerPacientes());
         tableView.setItems(lista);
 
-        // 3. Actualizamos los numeritos apenas abre
+        //actualizamos los numeritos
         actualizarContadores();
 
-        // 4. El listener para la selección (el que ya tienes de "Seleccionaste a:")
+        // el listener para la selección
         tableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
                 lblError.setText("Seleccionaste a: " + newSelection.getNombre());
             }
         });
     }
-
-    // --- 5. ACCIONES DE LOS BOTONES ---
 
     @FXML
     void clicEnNuevo(ActionEvent event) {
@@ -82,13 +75,12 @@ public class HelloController {
 
     @FXML
     void clicEnEditar(ActionEvent event) {
-        // 1. Verificamos selección (Esto ya lo tienes)
+        // verificamos selección
         Paciente seleccionado = tableView.getSelectionModel().getSelectedItem();
 
         if (seleccionado != null) {
             try {
-                // Esta forma busca el archivo fxml en la misma carpeta donde está tu controlador
-                // Esta es la ruta real según tu estructura de carpetas:
+                // esta forma busca el archivo fxml
                 FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("/com/consultorio/utez2dpacientesjavafxequipo8/views/appview.fxml"));
                 Parent root = loader.load();
 
@@ -102,7 +94,7 @@ public class HelloController {
                 stage.show();
 
             } catch (Exception e) {
-                // Si falla, esto nos va a imprimir en la consola EXACTAMENTE qué buscó Java
+                //si falla, esto va a imprimir el error
                 lblError.setText("Error: No encontré el archivo. Yo busqué en: " + getClass().getResource("appview.fxml"));
                 e.printStackTrace();
             }
@@ -113,53 +105,53 @@ public class HelloController {
 
     @FXML
     void clicEnEstatus(ActionEvent event) {
-        // Vemos quién está seleccionado en la tabla
+        // vemos quién está seleccionado en la tabla
         Paciente seleccionado = tableView.getSelectionModel().getSelectedItem();
 
         if (seleccionado != null) {
-            //Cambiamos el estatus (Si es Activo pasa a Inactivo, y viceversa)
+            //cambiamos el estatus
             if (seleccionado.getEstatus().equalsIgnoreCase("ACTIVO")) {
                 seleccionado.setEstatus("INACTIVO");
             } else {
                 seleccionado.setEstatus("ACTIVO");
             }
-            //Guardamos los cambios en el archivo CSV
+            //guardamos los cambios en el archivo CSV
             ManejadorArchivos.guardarPacientes(tableView.getItems());
-            //Refrescamos la tabla y los contadores
+            //refrescamos la tabla y los contadores
             tableView.refresh();
             actualizarContadores();
 
             System.out.println("Estatus actualizado para: " + seleccionado.getNombre());
         } else {
-            // Si no seleccionó a nadie, le avisamos
+            //si no seleccionó a nadie, le avisamos
             lblError.setText("Por favor, selecciona a un paciente de la tabla.");
         }
     }
 
     @FXML
     void clicEnEliminar(ActionEvent event) {
-        // 1. Obtenemos al paciente seleccionado de la tabla
+        // obtenemos al paciente seleccionado de la tabla
         Paciente seleccionado = tableView.getSelectionModel().getSelectedItem();
 
         if (seleccionado != null) {
-            // 2. Creamos la alerta de confirmación
+            // creamos la alerta de confirmación
             Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
             alerta.setTitle("Confirmar eliminación");
             alerta.setHeaderText("¿Estás seguro de eliminar al paciente?");
             alerta.setContentText("El paciente " + seleccionado.getNombre() + " cambiará a estado INACTIVO.");
 
-            // 3. Esperamos a que el usuario presione un botón
+            // esperamos a que el usuario presione un botón
             Optional<ButtonType> resultado = alerta.showAndWait();
 
-            // 4. Si presionó el botón OK
+            // si presionó el botón
             if (resultado.isPresent() && resultado.get() == ButtonType.OK) {
-                // Cambiamos el estatus a INACTIVO
+                // cambiamos el estatus a INACTIVO
                 seleccionado.setEstatus("INACTIVO");
 
-                // Guardamos los cambios en el archivo CSV
+                // guardamos los cambios en el archivo CSV
                 ManejadorArchivos.guardarPacientes(tableView.getItems());
 
-                // Refrescamos la tabla y los contadores de la pantalla principal
+                //refrescamos la tabla y los contadores de la pantalla principal
                 tableView.refresh();
                 actualizarContadores();
 
@@ -167,31 +159,31 @@ public class HelloController {
                 lblError.setText("Eliminado correctamente");
             }
         } else {
-            // Si no seleccionó a nadie, usamos el label de alerta que tienes en tu diseño
+            // Si no seleccionó a nadie se avisa
             lblError.setText("Selecciona a alguien para eliminar.");
         }
     }
 
     @FXML
     void clicEnActualizar(ActionEvent event) {
-        // Volvemos a leer el archivo CSV
+        // volvemos a leer el archivo CSV
         ObservableList<Paciente> lista = FXCollections.observableArrayList(ManejadorArchivos.leerPacientes());
-        // Se lo pasamos a la tabla
+        //se pasa a la tabla
         tableView.setItems(lista);
-        // Actualizamos contadores
+        // actualizamos contadores
         actualizarContadores();
 
         lblError.setText("Datos actualizados desde el archivo.");
     }
 
     public void actualizarContadores() {
-        // 1. Obtenemos cuántos pacientes hay en la tabla actualmente
+        // obtenemos cuántos pacientes hay en la tabla actualmente
         int total = tableView.getItems().size();
 
         int activos = 0;
         int inactivos = 0;
 
-        // 2. Recorremos la lista para contar según el estatus
+        // contamos el estatus activos e inactivos
         for (Paciente paciente : tableView.getItems()) {
             if (paciente.getEstatus().equalsIgnoreCase("ACTIVO")) {
                 activos++;
@@ -200,12 +192,12 @@ public class HelloController {
             }
         }
 
-        // 3. Escribimos los resultados en los Labels de la pantalla
+        //escribimos los resultados con label
         lblTotal.setText("Total: " + total);
         lblActivos.setText("Activos: " + activos);
         lblInactivos.setText("Inactivos: " + inactivos);
 
-        // Un pequeño truco: limpia el lblAlert para que no se quede el mensaje ahí siempre
+        //limpiar el lblAlert dejandolo en blanco
         lblError.setText("registro cargado con exito");
     }
 

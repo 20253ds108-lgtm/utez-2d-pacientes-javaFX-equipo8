@@ -20,34 +20,33 @@ public class FileRepository {
             return Files.readAllLines(rutaArchivo, StandardCharsets.UTF_8);
         }
 
-        // Lee el archivo y devuelve una lista de Pacientes
-        // Funciona solo porque dios asi lo quizo
+        // lo lee y da la lista de pacientes
         public List<Launcher.Paciente> cargarPacientes() throws IOException {
             List<String> lines = leerLineas();
-            // Crea una lista vacía donde guardaremos los objetos de tipo Paciente ya procesado
+            //crea una lista para los objetos paciente
             List<Launcher.Paciente> lista = new ArrayList<>();
-            // Recorre cada una de las líneas obtenidas del archivo de texto
+            // lee las lineas del archivo de texto
             for (String line : lines) {
-                // Separa la línea en trozos cada vez que encuentra una coma.
-                // parts[0] será la CURP, parts[1] el Nombre, etc. El "-1" mantiene campos vacíos.
+                // separa cuando hay coma
+                // 0 = CURP, 1= Nombre, ... -1 es para campos vacíos
                 String[] parts = line.split(",", -1);
                 if (parts.length >= 6) {
                     Launcher.Paciente p = new Launcher.Paciente(
-                            parts[0].trim(), // Extrae la CURP y limpia espacios en blanco accidentales
-                            parts[1].trim(), // Extrae el nombre y limpia espacios
-                            Integer.parseInt(parts[2].trim()), //Convierte el texto de la edad a un número entero real
-                            parts[3].trim(), //Extrae el teléfono
-                            parts[4].trim(), //Extrae la información de alergias
-                            parts[5].trim()  //Extrae el estatus del paciente
+                            parts[0].trim(), // extrae y limpia, curp
+                            parts[1].trim(), // nombre
+                            Integer.parseInt(parts[2].trim()), //texto a numero
+                            parts[3].trim(), //telefono
+                            parts[4].trim(), //alergias
+                            parts[5].trim()  //Estatus
                     );
-                    // Agrega el objeto Paciente recién fabricado a nuestra lista de resultados
+                    // agrega paciente a la lista
                     lista.add(p);
                 }
             }
-            // Devuelve la lista completa de pacientes listos para ser mostrados en la TableView
+            // da la lista de pacientes para mostrarlos en TableView
             return lista;
         }
-        // Guarda toda la lista de objetos de vuelta al CSV
+        //guarda la lista de objetos en CSV
         public void guardarTodo(List<Launcher.Paciente> pacientes) throws IOException {
             List<String> lines = new ArrayList<>();
             for (Launcher.Paciente paciente : pacientes) {
