@@ -7,4 +7,5 @@ module com.consultorio.utez2dpacientesjavafxequipo8 {
     opens com.consultorio.utez2dpacientesjavafxequipo8 to javafx.fxml;
     exports com.consultorio.utez2dpacientesjavafxequipo8;
 
+    opens com.consultorio.utez2dpacientesjavafxequipo8.views to javafx.fxml;
 }

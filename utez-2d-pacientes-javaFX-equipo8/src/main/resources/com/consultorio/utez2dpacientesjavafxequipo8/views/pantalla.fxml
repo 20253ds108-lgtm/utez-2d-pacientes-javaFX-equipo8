@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.consultorio.utez2dpacientesjavafxequipo8.HelloController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.consultorio.utez2dpacientesjavafxequipo8.HelloController">
 
 <left>
     <VBox prefWidth="250.0" spacing="15.0" style="-fx-background-color: #ecf0f1;" BorderPane.alignment="CENTER">
@@ -18,11 +18,10 @@
                     <Font name="System Italic" size="18.0" />
                 </font>
             </Label>
-            <Button fx:id="btnNuevo" mnemonicParsing="false" onAction="#clicEnNuevo" prefHeight="40.0" prefWidth="210.0" text="Nuevo" />
-            <Button fx:id="btnEditar" mnemonicParsing="false" onAction="#clicEnEditar" prefHeight="40.0" prefWidth="210.0" text="Editar" />
-            <Button fx:id="btnEstatus" mnemonicParsing="false" onAction="#clicEnEstatus" prefHeight="40.0" prefWidth="210.0" text="Estatus" />
-            <Button fx:id="btnEliminar" mnemonicParsing="false" onAction="#clicEnEliminar" prefHeight="40.0" prefWidth="211.0" text="Eliminar" />
-            <Button fx:id="btnActualizar" mnemonicParsing="false" onAction="#clicEnActualizar" prefHeight="40.0" prefWidth="210.0" text="Actualizar" />
+            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="210.0" text="Nuevo" />
+            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="210.0" text="Editar" />
+            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="210.0" text="Estatus" />
+            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="211.0" text="Eliminar" />
             <Label fx:id="lblTotal" text="Total: 0">
                 <font>
                     <Font name="System Bold" size="13.0" />
@@ -44,6 +43,7 @@
                   <Font name="Sylfaen" size="13.0" />
                </font>
             </Label>
+            <Label fx:id="lblAlertas" prefHeight="17.0" prefWidth="221.0" />
         </children>
     </VBox>
 </left>
