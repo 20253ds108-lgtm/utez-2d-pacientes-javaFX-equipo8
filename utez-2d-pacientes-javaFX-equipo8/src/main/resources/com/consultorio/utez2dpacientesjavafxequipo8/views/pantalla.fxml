@@ -5,69 +5,69 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.consultorio.utez2dpacientesjavafxequipo8.HelloController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.consultorio.utez2dpacientesjavafxequipo8.HelloController">
 
-<left>
-    <VBox prefWidth="250.0" spacing="15.0" style="-fx-background-color: #ecf0f1;" BorderPane.alignment="CENTER">
-        <padding>
-            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-        </padding>
-        <children>
-            <Label text="Registro de pacientes" textFill="#944e7b">
-                <font>
-                    <Font name="System Italic" size="18.0" />
-                </font>
-            </Label>
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="210.0" text="Nuevo" />
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="210.0" text="Editar" />
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="210.0" text="Estatus" />
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="211.0" text="Eliminar" />
-            <Label fx:id="lblTotal" text="Total: 0">
-                <font>
-                    <Font name="System Bold" size="13.0" />
-                </font>
-            </Label>
-            <Label fx:id="lblActivos" text="Activos: 0" textFill="#0e6b0e">
-                <font>
-                    <Font name="System Bold" size="13.0" />
-                </font>
-            </Label>
-            <Label fx:id="lblInactivos" text="Inactivos: 0" textFill="#b21212">
-                <font>
-                    <Font name="System Bold" size="13.0" />
-                </font>
-            </Label>
-            <Label fx:id="lblAlert" prefHeight="17.0" prefWidth="221.0" />
-            <Label fx:id="lblError" prefHeight="28.0" prefWidth="210.0" textAlignment="JUSTIFY" textFill="#b21212">
-               <font>
-                  <Font name="Sylfaen" size="13.0" />
-               </font>
-            </Label>
-            <Label fx:id="lblAlertas" prefHeight="17.0" prefWidth="221.0" />
-        </children>
-    </VBox>
-</left>
+    <left>
+        <VBox prefWidth="250.0" spacing="15.0" style="-fx-background-color: #ecf0f1;" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </padding>
+            <children>
+                <Label text="Registro de pacientes" textFill="#944e7b">
+                    <font>
+                        <Font name="System Italic" size="18.0" />
+                    </font>
+                </Label>
+                <Button fx:id="btnNuevo" mnemonicParsing="false" onAction="#clicEnNuevo" prefHeight="40.0" prefWidth="210.0" text="Nuevo" />
+                <Button fx:id="btnEditar" mnemonicParsing="false" onAction="#clicEnEditar" prefHeight="40.0" prefWidth="210.0" text="Editar" />
+                <Button fx:id="btnEstatus" mnemonicParsing="false" onAction="#clicEnEstatus" prefHeight="40.0" prefWidth="210.0" text="Estatus" />
+                <Button fx:id="btnEliminar" mnemonicParsing="false" onAction="#clicEnEliminar" prefHeight="40.0" prefWidth="211.0" text="Eliminar" />
+                <Button fx:id="btnActualizar" mnemonicParsing="false" onAction="#clicEnActualizar" prefHeight="40.0" prefWidth="210.0" text="Actualizar" />
+                <Label fx:id="lblTotal" text="Total: 0">
+                    <font>
+                        <Font name="System Bold" size="13.0" />
+                    </font>
+                </Label>
+                <Label fx:id="lblActivos" text="Activos: 0" textFill="#0e6b0e">
+                    <font>
+                        <Font name="System Bold" size="13.0" />
+                    </font>
+                </Label>
+                <Label fx:id="lblInactivos" text="Inactivos: 0" textFill="#b21212">
+                    <font>
+                        <Font name="System Bold" size="13.0" />
+                    </font>
+                </Label>
+                <Label fx:id="lblAlert" prefHeight="17.0" prefWidth="221.0" />
+                <Label fx:id="lblError" prefHeight="28.0" prefWidth="210.0" textAlignment="JUSTIFY" textFill="#b21212">
+                    <font>
+                        <Font name="Sylfaen" size="13.0" />
+                    </font>
+                </Label>
+            </children>
+        </VBox>
+    </left>
 
-<center>
-    <VBox spacing="10.0" BorderPane.alignment="CENTER">
-        <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-        </padding>
-        <children>
-            <TableView fx:id="tableView" prefHeight="510.0" prefWidth="647.0" VBox.vgrow="ALWAYS">
-                <columns>
-                    <TableColumn fx:id="vistaCurp" prefWidth="133.0" text="CURP" />
-                    <TableColumn fx:id="vistaNombre" prefWidth="119.0" text="Nombre" />
-                    <TableColumn fx:id="vistaEdad" prefWidth="93.0" text="Edad" />
-                    <TableColumn fx:id="vistaTel" prefWidth="149.0" text="Tel." />
-                    <TableColumn fx:id="vistaEstatus" prefWidth="102.0" text="Estatus" />
-                  <TableColumn fx:id="vistaAlergias" prefWidth="149.0" text="Alergias" />
-                </columns>
-                <columnResizePolicy>
-                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                </columnResizePolicy>
-            </TableView>
-        </children>
-    </VBox>
-</center>
+    <center>
+        <VBox spacing="10.0" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </padding>
+            <children>
+                <TableView fx:id="tableView" prefHeight="510.0" prefWidth="647.0" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="vistaCurp" prefWidth="133.0" text="CURP" />
+                        <TableColumn fx:id="vistaNombre" prefWidth="119.0" text="Nombre" />
+                        <TableColumn fx:id="vistaEdad" prefWidth="93.0" text="Edad" />
+                        <TableColumn fx:id="vistaTel" prefWidth="149.0" text="Tel." />
+                        <TableColumn fx:id="vistaEstatus" prefWidth="102.0" text="Estatus" />
+                        <TableColumn fx:id="vistaAlergias" prefWidth="149.0" text="Alergias" />
+                    </columns>
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                    </columnResizePolicy>
+                </TableView>
+            </children>
+        </VBox>
+    </center>
 </BorderPane>

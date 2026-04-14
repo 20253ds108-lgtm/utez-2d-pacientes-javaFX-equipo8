@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="4">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_21">
+    <output url="file://$MODULE_DIR$/../out/production/demo" />
+    <output-test url="file://$MODULE_DIR$/../out/test/demo" />
+    <exclude-output />
+    <orderEntry type="jdk" jdkName="temurin-21" jdkType="JavaSDK" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

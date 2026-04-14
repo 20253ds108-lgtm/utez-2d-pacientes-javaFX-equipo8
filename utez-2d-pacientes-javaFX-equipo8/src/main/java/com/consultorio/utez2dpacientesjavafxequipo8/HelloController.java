@@ -1,14 +1,19 @@
 package com.consultorio.utez2dpacientesjavafxequipo8;
 
-import com.consultorio.utez2dpacientesjavafxequipo8.service.personaService;
-import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import javafx.collections.ObservableList;
-import javafx.collections.FXCollections;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import java.util.Optional;
 
 public class HelloController {
 
@@ -19,7 +24,7 @@ public class HelloController {
     @FXML private Label lblActivos;
     @FXML private Label lblInactivos;
 
-    //TABLA
+    // --- 2. LA TABLA (Configurada para usar tu clase Paciente) ---
     @FXML private TableView<Paciente> tableView;
     @FXML private TableColumn<Paciente, String> vistaCurp;
     @FXML private TableColumn<Paciente, String> vistaNombre;
@@ -123,27 +128,6 @@ public class HelloController {
         }
     }
 
-    private TextField txtCurp;
-    @FXML
-    private TextField txtNombre;
-    @FXML
-    private TextField txtEdad;
-    @FXML
-    private TextField txtTel;
-    @FXML
-    private TextField txtAlergias;
-    @FXML
-    private TextField txtEstatus;
-    @FXML
-    private TableView<String> tableView;
-    @FXML
-    private Label lblAlertas;
-    @FXML
-    private TableColumn vistaCurp;
-    @FXML
-    private TableColumn vistaNombre;
-    @FXML
-    private TableColumn vistaEdad;
     @FXML
     void clicEnEliminar(ActionEvent event) {
         // obtenemos al paciente seleccionado de la tabla
@@ -154,15 +138,15 @@ public class HelloController {
             Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
             alerta.setTitle("Confirmar eliminación");
             alerta.setHeaderText("¿Estás seguro de eliminar al paciente?");
-            alerta.setContentText("El paciente " + seleccionado.getNombre() + " cambiará a estado INACTIVO.");
+            alerta.setContentText("El paciente " + seleccionado.getNombre() + " será eliminado definitivamente del sistema.");
 
             // esperamos a que el usuario presione un botón
             Optional<ButtonType> resultado = alerta.showAndWait();
 
             // si presionó el botón
             if (resultado.isPresent() && resultado.get() == ButtonType.OK) {
-                // cambiamos el estatus a INACTIVO
-                seleccionado.setEstatus("INACTIVO");
+                // eliminamos al paciente
+                tableView.getItems().remove(seleccionado);
 
                 // guardamos los cambios en el archivo CSV
                 ManejadorArchivos.guardarPacientes(tableView.getItems());
@@ -171,58 +155,13 @@ public class HelloController {
                 tableView.refresh();
                 actualizarContadores();
 
-                System.out.println("Paciente inactivado: " + seleccionado.getNombre());
+                System.out.println("Paciente eliminado permanentemente: " + seleccionado.getNombre());
                 lblError.setText("Eliminado correctamente");
             }
         } else {
             // Si no seleccionó a nadie se avisa
             lblError.setText("Selecciona a alguien para eliminar.");
         }
-    private TableColumn vistaTel;
-    @FXML
-    private TableColumn vistaAlergias;
-    @FXML
-    private TableColumn vistaEstatus;
-
-    @FXML
-    public void initialize(){
-        tableView.getSelectionModel().selectedIndexProperty().addListener((observable,oldValue,newValue)->{
-            loadDataFromFile(newValue.toString());
-        });
-        tableView.setItems(data);
-        cargarArchivo();
-    }
-
-    @FXML
-    private personaService service = new personaService();
-    private final ObservableList<String> data = FXCollections.observableArrayList();
-
-    private void cargarArchivo(){//tratar de traer los archivos
-        try {
-            List<String> objeto = service.loadDataForList();
-            data.addAll(objeto);
-            lblAlertas.setText("se cargaron los datos correctamente");
-            lblAlertas.setStyle("-fx-text-fill: green");
-        }catch (IOException e){
-            lblAlertas.setText("error: no se cargaron los datos");
-            lblAlertas.setStyle("-fx-text-fill: red");
-
-        }
-    }
-
-    private void loadDataFromFile(String objeto){//cargar la data desde el archivo
-        if (objeto==null || objeto.isBlank()){
-            return;
-        }
-        String[] arreglo=objeto.split(",");
-        vistaCurp.setText(arreglo[0]);//arreglo para guardar todos los datos
-        vistaNombre.setText(arreglo[1]);
-        vistaEdad.setText(arreglo[2]);
-        vistaTel.setText(arreglo[3]);
-        vistaAlergias.setText(arreglo[4]);
-        vistaEstatus.setText(arreglo[5]);
-
-
     }
 
     @FXML
