@@ -1,6 +1,5 @@
 package com.consultorio.utez2dpacientesjavafxequipo8;
 
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,13 +17,11 @@ import java.util.Optional;
 public class HelloController {
 
     @FXML private Label lblError;
-
-
     @FXML private Label lblTotal;
     @FXML private Label lblActivos;
     @FXML private Label lblInactivos;
 
-    // --- 2. LA TABLA (Configurada para usar tu clase Paciente) ---
+    //Tabla
     @FXML private TableView<Paciente> tableView;
     @FXML private TableColumn<Paciente, String> vistaCurp;
     @FXML private TableColumn<Paciente, String> vistaNombre;
@@ -47,7 +44,7 @@ public class HelloController {
         ObservableList<Paciente> lista = FXCollections.observableArrayList(ManejadorArchivos.leerPacientes());
         tableView.setItems(lista);
 
-        //actualizamos los numeritos
+        //actualizamos los numeros
         actualizarContadores();
 
         // el listener para la selección
@@ -69,7 +66,6 @@ public class HelloController {
             stage.show();
         } catch (Exception e) {
             System.out.println("Error al abrir el formulario: " + e.getMessage());
-            e.printStackTrace();
         }
     }
 
@@ -81,6 +77,8 @@ public class HelloController {
         if (seleccionado != null) {
             try {
                 // esta forma busca el archivo fxml
+
+                //Investiga que significa cada cosa de aqui :D
                 FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("/com/consultorio/utez2dpacientesjavafxequipo8/views/appview.fxml"));
                 Parent root = loader.load();
 
@@ -179,7 +177,6 @@ public class HelloController {
     public void actualizarContadores() {
         // obtenemos cuántos pacientes hay en la tabla actualmente
         int total = tableView.getItems().size();
-
         int activos = 0;
         int inactivos = 0;
 
@@ -200,5 +197,4 @@ public class HelloController {
         //limpiar el lblAlert dejandolo en blanco
         lblError.setText("registro cargado con exito");
     }
-
 }

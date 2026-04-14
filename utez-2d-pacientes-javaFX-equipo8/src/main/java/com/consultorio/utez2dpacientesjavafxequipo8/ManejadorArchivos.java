@@ -26,7 +26,6 @@ public class ManejadorArchivos {
         File archivo = new File(NOMBRE_ARCHIVO);
 
         if (!archivo.exists()) return lista; // si el archivo no existe mandamos vacío
-
         try (BufferedReader reader = new BufferedReader(new FileReader(archivo))) {
             String linea;
             while ((linea = reader.readLine()) != null) {

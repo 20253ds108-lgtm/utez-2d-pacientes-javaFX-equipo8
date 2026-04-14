@@ -13,8 +13,8 @@
             </font>
         </Label>
 
-        <Button fx:id="btnGuardar" layoutX="96.0" layoutY="310.0" mnemonicParsing="false" onAction="#clicEnGuardar" prefHeight="25.0" prefWidth="154.0" text="Guardar" textFill="#0e9002" />
-        <Button fx:id="btnCancelar" layoutX="359.0" layoutY="310.0" mnemonicParsing="false" onAction="#clicEnCancelar" prefHeight="25.0" prefWidth="161.0" text="Cancelar" textFill="#fc0303" />
+        <Button layoutX="96.0" layoutY="310.0" mnemonicParsing="false" onAction="#clicEnGuardar" prefHeight="25.0" prefWidth="154.0" text="Guardar" textFill="#0e9002" />
+        <Button layoutX="359.0" layoutY="310.0" mnemonicParsing="false" onAction="#clicEnCancelar" prefHeight="25.0" prefWidth="161.0" text="Cancelar" textFill="#fc0303" />
 
         <Label fx:id="lblError" layoutX="34.0" layoutY="270.0" prefHeight="25.0" prefWidth="519.0" textAlignment="CENTER" textFill="RED">
             <font>

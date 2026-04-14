@@ -1,5 +1,7 @@
 package com.consultorio.utez2dpacientesjavafxequipo8;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -16,11 +18,12 @@ public class AppViewController {
     @FXML private TextField txtTelefono;
     @FXML private TextField txtAlergias;
     @FXML private Label lblError;
+    private ObservableList<Paciente> listaPacientes = FXCollections.observableArrayList();
 
     // boton guardar
     @FXML
     public void clicEnGuardar(ActionEvent event) {
-        // 1. IMPORTANTE: Limpiar el Label al empezar cada clic
+        // limpia el label
         lblError.setText("");
 
         // lee los datos
@@ -38,6 +41,13 @@ public class AppViewController {
             return;
         }
 
+        for (Paciente p : listaPacientes) {
+            if (p.getCurp().equalsIgnoreCase(curp)) {
+                return;
+            }
+        }
+
+
         if (curp.length() != 18) {
             lblError.setText("¡ERROR: La CURP debe tener 18 caracteres!");
             return;
@@ -53,10 +63,12 @@ public class AppViewController {
             return;
         }
 
-        if (!tel.matches("\\d{10}")) {
+        if (tel.length() != 10) {
             lblError.setText("¡ERROR: El teléfono debe ser de 10 números!");
             return;
         }
+
+
 
         // si entra aquí paso las pruebas anteriores
         try {
@@ -66,6 +78,50 @@ public class AppViewController {
                 return;
             }
 
+            Paciente nuevo = new Paciente(curp, nombre, edad, tel, alergias, estatus);
+            java.util.List<Paciente> lista = ManejadorArchivos.leerPacientes();
+
+            // Usamos codigo de cargarDatos para saber si es edicion
+            // si no es editable, es que estamos editando un paciente existente
+            boolean esEdicion = !txtCurp.isEditable();
+
+            if (esEdicion) {
+                for (int i = 0; i < lista.size(); i++) {
+                    if (lista.get(i).getCurp().equalsIgnoreCase(nuevo.getCurp())) {
+                        lista.set(i, nuevo);
+                        break;
+                    }
+                }
+            } else {
+                // validar duplicado
+                boolean exist = false;
+                for (Paciente paciente : lista) {
+                    if (paciente.getCurp().equalsIgnoreCase(nuevo.getCurp())) {
+                        exist = true;
+                        break;
+                    }
+                }
+
+                if (exist) {
+                    lblError.setText("¡ERROR: El CURP ya está registrado!");
+                    return; //evita que se guarde si ya existe
+                } else {
+                    lista.add(nuevo);
+                }
+            }
+
+            // guardar y cerrar
+            ManejadorArchivos.guardarPacientes(lista);
+
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            stage.close();
+
+        } catch (NumberFormatException e) {
+            lblError.setText("¡ERROR: La edad debe ser un número!");
+            return;
+        }
+
+        int edad = Integer.parseInt(edadStr);
             //guardamos
             Paciente nuevo = new Paciente(curp, nombre, edad, tel, alergias, estatus);
             java.util.List<Paciente> lista = ManejadorArchivos.leerPacientes();
@@ -88,10 +144,6 @@ public class AppViewController {
             // Cerramos la ventana
             Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
             stage.close();
-
-        } catch (NumberFormatException e) {
-            lblError.setText("¡ERROR: La edad debe ser un número!");
-        }
     }
 
     // btn cancelar

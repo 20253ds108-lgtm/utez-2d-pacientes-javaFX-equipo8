@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="97917d85-ac0d-46f8-b0de-e667a125ddfa" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;20253ds111-coder&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/20253ds108-lgtm/utez-2d-pacientes-javaFX-equipo8.git&quot;,
+    &quot;accountId&quot;: &quot;10097e95-26a5-4fcc-9a56-5471c9433b00&quot;
+  }
+}</component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="3Bpmn0rleQbJKKNmVJBJILrTdbS" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.HelloApplication.executor": "Run",
+    "Application.Launcher.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "false",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/trabajos 1/prog. estructurada/Nueva carpeta (2)/UNIDAD 4/utez-2d-pacientes-javaFX-equipo8",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\trabajos 1\prog. estructurada\Nueva carpeta (2)\UNIDAD 4\utez-2d-pacientes-javaFX-equipo8\utez-2d-pacientes-javaFX-equipo8\target\classes\com\consultorio\utez2dpacientesjavafxequipo8" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\trabajos 1\prog. estructurada\Nueva carpeta (2)\UNIDAD 4\utez-2d-pacientes-javaFX-equipo8\utez-2d-pacientes-javaFX-equipo8\target\classes\com\consultorio\utez2dpacientesjavafxequipo8\views" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-26cb7f24e5b0-intellij.indexing.shared.core-IU-253.29346.240" />
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-IU-253.29346.240" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="97917d85-ac0d-46f8-b0de-e667a125ddfa" name="Changes" comment="" />
+      <created>1775194548745</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1775194548745</updated>
+      <workItem from="1775194550074" duration="2284000" />
+      <workItem from="1775263615027" duration="12491000" />
+      <workItem from="1775330712039" duration="19117000" />
+      <workItem from="1775568369209" duration="5163000" />
+      <workItem from="1775620587902" duration="1190000" />
+      <workItem from="1775660745880" duration="10138000" />
+      <workItem from="1775763056692" duration="316000" />
+      <workItem from="1775888717217" duration="3052000" />
+      <workItem from="1775968508193" duration="4660000" />
+      <workItem from="1776033586316" duration="7374000" />
+      <workItem from="1776085560608" duration="3439000" />
+      <workItem from="1776089041812" duration="2180000" />
+      <workItem from="1776091268216" duration="928000" />
+      <workItem from="1776106983921" duration="36000" />
+      <workItem from="1776136778126" duration="1112000" />
+      <workItem from="1776186517588" duration="747000" />
+      <workItem from="1776188309378" duration="795000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
